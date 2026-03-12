@@ -1,25 +1,22 @@
 
 import java.util.Scanner;
+import java.util.Stack;
 public class PalindromeCheckerApp{
     public static void main(String[]args){
         Scanner sc=new Scanner(System.in);
         String s=sc.nextLine();
-        char[]c=s.toCharArray();
-        int i=0,j=c.length-1;
-        boolean p=true;
-        while(i<j){
-            if(c[i]!=c[j]){
-                p=false;
-                break;
-            }
-            i++;
-            j--;
+        Stack<Character>st=new Stack<>();
+        for(int i=0;i<s.length();i++){
+            st.push(s.charAt(i));
         }
-        if(p){
+        String r="";
+        while(!st.isEmpty()){
+            r=r+st.pop();
+        }
+        if(s.equals(r)){
             System.out.println("The string "+s+" is a palindrome");
         }else{
             System.out.println("The string "+s+" is not a palindrome");
         }
     }
 }
-
